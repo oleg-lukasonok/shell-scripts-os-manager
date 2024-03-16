@@ -26,6 +26,8 @@ _osManager_packageInfo() {
         _osManager_isPackageInstalled "${TMP_OS_PACKAGE}"
     )
 
+    _loggers_debug "${FUNCTION_NAME}" "IS_INSTALLED: ${IS_INSTALLED}"
+
     if
         [ "${IS_INSTALLED}" = true ]
     then

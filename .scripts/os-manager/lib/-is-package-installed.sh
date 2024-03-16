@@ -11,7 +11,6 @@
 
 _osManager_isPackageInstalled() {
     local FUNCTION_NAME="_osManager_isPackageInstalled"
-    _loggers_debug "${FUNCTION_NAME}"
 
     local RET_VAL=false
 
@@ -21,6 +20,9 @@ _osManager_isPackageInstalled() {
     then
         TMP_OS_PACKAGE="${1}"
     fi
+
+    _loggers_debug "${FUNCTION_NAME}" "TMP_OS_PACKAGE: ${TMP_OS_PACKAGE}"
+    _loggers_debug "${FUNCTION_NAME}" "OS_PACKAGE: ${OS_PACKAGE}"
 
     if
         [ -z "${TMP_OS_PACKAGE}" ]
