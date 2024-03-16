@@ -36,6 +36,13 @@ _osManager_isPackageInstalled() {
     local FOUND=$(
         which "${TMP_OS_PACKAGE}" | grep -v "not found"
     )
+    if
+        [ -z "${FOUND}" ]
+    then
+        FOUND=$(
+            eval "${TMP_OS_PACKAGE} --version"
+        )
+    fi
 
     if
         [ ! -z "${FOUND}" ]
