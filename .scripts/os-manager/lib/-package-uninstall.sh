@@ -29,7 +29,15 @@ _osManager_packageUninstall() {
         [ "${IS_INSTALLED}" = true ]
     then
         _loggers_emptyLine
-        brew uninstall "${TMP_OS_PACKAGE}"
+        if
+            [ "${LOCAL_OS_TYPE}" = "darwin" ]
+        then
+            brew uninstall "${TMP_OS_PACKAGE}"
+        elif
+            [ "${LOCAL_OS_TYPE}" = "debian" ]
+        then
+            apt-get remove "${TMP_OS_PACKAGE}"
+        fi
         _loggers_emptyLine
     else
         _loggers_warn "${FUNCTION_NAME}"

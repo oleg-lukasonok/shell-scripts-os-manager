@@ -30,7 +30,15 @@ _osManager_packageInstall() {
         [ "${IS_INSTALLED}" = false ]
     then
         _loggers_emptyLine
-        brew install "${TMP_OS_PACKAGE}"
+        if
+            [ "${LOCAL_OS_TYPE}" = "darwin" ]
+        then
+            brew install "${TMP_OS_PACKAGE}"
+        elif
+            [ "${LOCAL_OS_TYPE}" = "debian" ]
+        then
+            apt-get install "${TMP_OS_PACKAGE}"
+        fi
         _loggers_emptyLine
     else
         _loggers_warn "${FUNCTION_NAME}"
