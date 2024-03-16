@@ -34,7 +34,7 @@ _osManager_isPackageInstalled() {
     fi
 
     local FOUND=$(
-        brew list | grep "${TMP_OS_PACKAGE}"
+        which "${TMP_OS_PACKAGE}" | grep -v "not found"
     )
 
     if
