@@ -39,6 +39,7 @@ _osManager_isPackageInstalled() {
     if
         [ -z "${FOUND}" ]
     then
+        . $HOME/.zshrc
         FOUND=$(
             eval "${TMP_OS_PACKAGE} --version"
         )
@@ -49,8 +50,6 @@ _osManager_isPackageInstalled() {
     then
         RET_VAL=true
     fi
-
-    _loggers_debug "${FUNCTION_NAME}" "FOUND: ${FOUND}"
     _loggers_debug "${FUNCTION_NAME}" "RET_VAL: ${RET_VAL}"
 
     echo "${RET_VAL}"
